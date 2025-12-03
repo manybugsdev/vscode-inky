@@ -14,10 +14,20 @@
   "contributes": {
     "commands": [
       {
-        "command": "vscode-inky.helloWorld",
-        "title": "Hello World"
+        "command": "vscode-inky.openPreview",
+        "title": "Open Preview",
+        "icon": "$(open-preview)"
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "vscode-inky.openPreview",
+          "group": "navigation",
+          "when": "resourceExtname == .ink"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
