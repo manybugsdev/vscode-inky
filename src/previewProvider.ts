@@ -275,12 +275,14 @@ export class InkPreviewProvider {
         : ""
     }
     
-    <script type="module">
+    <script>
         const vscode = acquireVsCodeApi();
-        let storyState = ${storyJson};
         
-        // Import inkjs (we'll need to handle this differently for the webview)
-        // For now, we'll rely on the extension to handle story progression
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
         
         document.querySelectorAll('.choice').forEach(button => {
             button.addEventListener('click', function() {
@@ -304,6 +306,7 @@ export class InkPreviewProvider {
             
             switch (message.type) {
                 case 'updateStory':
+                    // Use textContent to safely display story content
                     document.getElementById('story-content').textContent = message.content;
                     
                     const choicesDiv = document.getElementById('choices');
@@ -328,12 +331,6 @@ export class InkPreviewProvider {
                     break;
             }
         });
-        
-        function escapeHtml(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
     </script>
 </body>
 </html>`;
