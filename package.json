@@ -35,6 +35,13 @@
         "aliases": ["Ink", "ink"],
         "configuration": "./language-configuration.json"
       }
+    ],
+    "grammars": [
+      {
+        "language": "ink",
+        "scopeName": "source.ink",
+        "path": "./syntaxes/ink.tmLanguage.json"
+      }
     ]
   },
   "scripts": {
