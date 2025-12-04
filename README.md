@@ -4,6 +4,7 @@ A Visual Studio Code extension that provides live preview for [Inkle's Ink](http
 
 ## Features
 
+- **Syntax Highlighting**: Rich syntax highlighting for Ink language constructs including knots, stitches, choices, diverts, logic blocks, tags, and more
 - **Live Preview**: View your Ink stories in real-time as you write them
 - **Interactive Playthrough**: Make choices and navigate through your story directly in the preview
 - **Auto-Reload**: Preview automatically updates when you save your .ink file
@@ -42,6 +43,7 @@ Learn more about Ink:
 ### 0.0.1
 
 Initial release:
+- Syntax highlighting for .ink files
 - Live preview for .ink files
 - Interactive story playthrough
 - Auto-reload on file save
