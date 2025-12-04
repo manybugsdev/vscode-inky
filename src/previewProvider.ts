@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 import * as path from "path";
-import { Story } from "inkjs/engine/Story";
-import { Compiler } from "inkjs/compiler/Compiler";
+import { Compiler, Story } from "inkjs/compiler/Compiler";
 
 export class InkPreviewProvider {
   private panel: vscode.WebviewPanel | undefined;
@@ -137,13 +136,13 @@ export class InkPreviewProvider {
       // Get the ink source code
       const inkSource = document.getText();
 
-      // Compile the ink source to JSON
+      // Compile the ink source - Compiler.Compile() returns a Story object directly
       const compiler = new Compiler(inkSource);
-      const storyJson = compiler.Compile();
+      const story = compiler.Compile();
 
-      if (storyJson) {
-        // Create a story from the compiled JSON
-        this.currentStory = new Story(storyJson);
+      if (story) {
+        // Store the compiled story
+        this.currentStory = story;
 
         // Update the webview with the story
         this.panel.webview.html = this.getWebviewContent(this.currentStory);
@@ -177,7 +176,6 @@ export class InkPreviewProvider {
       console.error("Error reading story:", error);
     }
 
-    const storyJson = JSON.stringify(story.ToJson());
     const choicesHtml = choices
       .map(
         (choice, index) =>
