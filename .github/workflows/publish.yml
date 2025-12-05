@@ -92,14 +92,18 @@ jobs:
           draft: false
           prerelease: false
 
+      - name: Get package name
+        id: package_name
+        run: echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
+
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./vscode-inky-${{ needs.check-version.outputs.version }}.vsix
-          asset_name: vscode-inky-${{ needs.check-version.outputs.version }}.vsix
+          asset_path: ./${{ steps.package_name.outputs.name }}-${{ needs.check-version.outputs.version }}.vsix
+          asset_name: ${{ steps.package_name.outputs.name }}-${{ needs.check-version.outputs.version }}.vsix
           asset_content_type: application/zip
 
       - name: Publish to VS Code Marketplace
