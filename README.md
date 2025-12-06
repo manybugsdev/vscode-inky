@@ -55,4 +55,6 @@ Initial release:
 
 Found a bug or have a feature request? Please open an issue on the [GitHub repository](https://github.com/manybugsdev/vscode-inky).
 
+Contributions are welcome! Please note that this project enforces [Conventional Commits](https://www.conventionalcommits.org/) for commit messages. See [CONTRIBUTING.md](./CONTRIBUTING.md) for more details.
+
 **Enjoy writing interactive stories with Ink!**
