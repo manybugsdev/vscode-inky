@@ -20,9 +20,14 @@ A Visual Studio Code extension that provides live preview for [Inkle's Ink](http
 5. Click on choices to navigate through your story
 6. Click "Restart Story" at the end to play through again
 
-## Example
+## Examples
 
-Try the example story included in the `examples/sample.ink` file to see the extension in action!
+This extension includes example stories to help you get started:
+
+- **`examples/sample.ink`** - A simple adventure story demonstrating basic features
+- **`examples/tutorial.ink`** - A comprehensive interactive tutorial covering all Ink language features with an RPG theme
+
+Try opening these files to see the extension in action!
 
 ## Requirements
 
