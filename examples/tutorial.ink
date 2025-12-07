@@ -896,9 +896,9 @@ The world is vast, and many adventures await!
 
 {fame == legendary:
     Your legendary status opens doors everywhere.
-- else: fame == respected:
+- fame == respected:
     You're respected in these lands.
-- else: fame == known:
+- fame == known:
     Your name is starting to be known.
 - else:
     You're still building your reputation.
