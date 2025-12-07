@@ -1,6 +1,41 @@
 # The Ink Language Tutorial
 # An Interactive RPG Adventure
 
+// ============================================
+// GLOBAL VARIABLES - Declared at the top
+// ============================================
+
+// Player stats and attributes
+VAR player_class = "Adventurer"
+VAR strength = 5
+VAR intelligence = 5
+VAR agility = 5
+VAR gold = 100
+VAR health = 100
+VAR max_health = 100
+VAR experience = 0
+VAR level = 1
+VAR player_name = "Hero"
+VAR walking_count = 0
+
+// List variables (for tracking state)
+LIST inventory = sword, health_potion, magic_scroll, lockpick, shield, fireball_spell
+VAR items = ()
+
+LIST quest_status = not_started, in_progress, completed
+VAR dragon_quest = not_started
+VAR village_quest = not_started
+
+LIST reputation = unknown, known, respected, legendary
+VAR fame = unknown
+
+LIST enemy_state = alive, wounded, defeated
+VAR goblin_chieftain = alive
+
+// ============================================
+// STORY START
+// ============================================
+
 Welcome, brave adventurer! This interactive story will teach you everything about the Ink language while you explore a fantasy world.
 
 This tutorial covers all Ink language features with RPG-themed examples. Each section demonstrates a different aspect of Ink scripting.
@@ -79,29 +114,11 @@ The Guild Master pulls out a large tome.
 // ============================================
 // SECTION 3: VARIABLES
 // ============================================
-
-// Global variables (declared at the top level with VAR)
-VAR player_class = "Adventurer"
-VAR strength = 5
-VAR intelligence = 5
-VAR agility = 5
-VAR gold = 100
-VAR health = 100
-VAR max_health = 100
-VAR experience = 0
-VAR level = 1
-VAR player_name = "Hero"
-
-// List variables (for tracking state)
-LIST inventory = sword, health_potion, magic_scroll, lockpick, shield, fireball_spell
-VAR items = ()
-
-LIST quest_status = not_started, in_progress, completed
-VAR dragon_quest = not_started
-VAR village_quest = not_started
-
-LIST reputation = unknown, known, respected, legendary
-VAR fame = unknown
+// All global variables are declared at the top of the file
+// See the variable declarations above for examples of:
+// - VAR for global variables
+// - LIST for enumerated states
+// Variables can store numbers, strings, or list values
 
 === stats_confirmed ===
 "Your path is set!"
@@ -255,8 +272,6 @@ You walk along the forest road toward Millhaven.
     * [Investigate the old ruins path]
         -> ruins_path
 }
-
-VAR walking_count = 0
 
 // ============================================
 // SECTION 7: TEMPORARY VARIABLES AND LOGIC
@@ -469,9 +484,8 @@ You find the village elder in the town hall.
 // ============================================
 // SECTION 12: COMBAT SYSTEM WITH LISTS
 // ============================================
-
-LIST enemy_state = alive, wounded, defeated
-VAR goblin_chieftain = alive
+// Lists and variables are declared at the top of the file
+// See the goblin_chieftain variable for enemy state tracking
 
 === goblin_camp ===
 You approach the goblin encampment carefully.
