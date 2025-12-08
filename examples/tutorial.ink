@@ -31,23 +31,19 @@ VAR fame = unknown
 
 LIST enemy_state = alive, wounded, defeated
 VAR goblin_chieftain = alive
-
-// ============================================
-// STORY START
-// ============================================
-
-Welcome, brave adventurer! This interactive story will teach you everything about the Ink language while you explore a fantasy world.
-
-This tutorial covers all Ink language features with RPG-themed examples. Each section demonstrates a different aspect of Ink scripting.
-
--> character_creation
+VAR goblin_count = 0
+VAR battle_rounds = 0
 
 // ============================================
 // SECTION 1: BASIC TEXT AND CHOICES
 // ============================================
+// The story starts here at the first knot
 
 === character_creation ===
-= introduction
+Welcome, brave adventurer! This interactive story will teach you everything about the Ink language while you explore a fantasy world.
+
+This tutorial covers all Ink language features with RPG-themed examples. Each section demonstrates a different aspect of Ink scripting.
+
 You stand before the Guild Hall, ready to register as an adventurer.
 
 "Welcome!" says the Guild Master. "What brings you here today?"
@@ -416,9 +412,9 @@ Health restored to {health}!
 You wander through the village streets.
 
 * [Visit the blacksmith]
-    -> tunnel blacksmith_shop ->->
+    -> blacksmith_shop ->
 * [Check the tavern]
-    -> tunnel village_tavern ->->
+    -> village_tavern ->
 * [Go to the elder]
     -> meet_elder
 
@@ -433,9 +429,10 @@ The blacksmith's forge glows with heat.
     ~ health += 20
     "Good choice! This will protect you well."
     Max Health increased!
+    ->->
 * {gold < 50} [Can't afford anything]
     "Come back when you have more coin."
-
+    ->->
 * [Leave]
     ->->
 
@@ -454,6 +451,7 @@ The tavern is warm and inviting.
     - else:
         "Sorry friend, you need 5 gold."
     }
+    ->->
 * [Leave]
     ->->
 
@@ -540,10 +538,10 @@ You slip in during the chaos!
 // ============================================
 
 === goblin_battle ===
-Three goblins attack you!
+~ goblin_count = 3
+~ battle_rounds = 0
 
-~ temp goblin_count = 3
-~ temp battle_rounds = 0
+Three goblins attack you!
 
 = battle_loop
 
@@ -776,7 +774,7 @@ You fight with determination!
     ~ health = health - 20
     
     {health <= 0:
-        -> battle_lost
+        -> goblin_battle.battle_lost
     - else:
         Health: {health}/{max_health}
         
@@ -860,6 +858,7 @@ The feast is {&delicious|magnificent|wonderful}!
         ~ intelligence += 1
         You learn the basics of healing magic!
         Intelligence +1!
+        -> ending_choice
 }
 
 * [Enjoy the evening]
@@ -896,12 +895,16 @@ The world is vast, and many adventures await!
 
 {fame == legendary:
     Your legendary status opens doors everywhere.
-- fame == respected:
-    You're respected in these lands.
-- fame == known:
-    Your name is starting to be known.
 - else:
-    You're still building your reputation.
+    {fame == respected:
+        You're respected in these lands.
+    - else:
+        {fame == known:
+            Your name is starting to be known.
+        - else:
+            You're still building your reputation.
+        }
+    }
 }
 
 The road ahead beckons...
