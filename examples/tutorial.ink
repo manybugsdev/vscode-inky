@@ -35,9 +35,15 @@ VAR goblin_count = 0
 VAR battle_rounds = 0
 
 // ============================================
+// STORY START
+// ============================================
+// The story begins by diverting to the first knot
+
+-> character_creation
+
+// ============================================
 // SECTION 1: BASIC TEXT AND CHOICES
 // ============================================
-// The story starts here at the first knot
 
 === character_creation ===
 Welcome, brave adventurer! This interactive story will teach you everything about the Ink language while you explore a fantasy world.
