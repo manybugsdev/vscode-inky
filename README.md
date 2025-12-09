@@ -26,6 +26,8 @@ This extension includes example stories to help you get started:
 
 - **`examples/sample.ink`** - A simple adventure story demonstrating basic features
 - **`examples/tutorial.ink`** - A comprehensive interactive tutorial covering all Ink language features with an RPG theme
+  - **`examples/tutorial.md`** - Documentation guide for the tutorial (English)
+  - **`examples/tutorial_ja.md`** - チュートリアルガイド（日本語）
 
 Try opening these files to see the extension in action!
 
