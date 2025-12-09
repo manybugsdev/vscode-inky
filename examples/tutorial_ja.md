@@ -102,6 +102,8 @@
 
 ## 実演される主要機能
 
+> **注意**: 以下のコード例は、実際の`tutorial.ink`ファイルに含まれる英語のコードを示しています。Inkコードでは、変数名、ノット名、およびリスト項目は通常英語で記述され、ナラティブテキストのみがローカライズされます。
+
 ### 変数と状態管理
 ```ink
 VAR player_class = "Warrior"
@@ -114,21 +116,21 @@ VAR items = ()
 
 ### 選択肢と分岐
 ```ink
-* [剣で攻撃する]
+* [Attack with sword]
     -> combat
-* [魔法を唱える]
+* [Cast magic spell]
     -> magic_combat
-+ [逃げる]
++ [Run away]
     -> escape
 ```
 
 ### 条件文
 ```ink
 {player_class == "Warrior":
-    あなたは強力な剣を振ります！
+    You swing your mighty sword!
 }
 {health < 30:
-    * [回復ポーションを飲む]
+    * [Drink healing potion]
         -> heal
 }
 ```
@@ -139,7 +141,7 @@ VAR items = ()
 ~ return base_damage + strength
 
 === healing_spring ===
-あなたは魔法の泉から水を飲みます。
+You drink from the magical spring.
 ~ health = max_health
 ->->
 ```
